@@ -6,14 +6,18 @@ test('ContactForm displays new contact to the screen', () => {
     render(<ContactForm />)
 
     const firstNameInput = screen.getByLabelText(/first name/i)
-    const lastNameInput = screen.getByText(/last name/i)
-    const emailInput = screen.getByText(/email/i)
-    const messageInput = screen.getByText(/message/i)
+    const lastNameInput = screen.getByLabelText(/last name/i)
+    const emailInput = screen.getByLabelText(/email/i)
+    const messageInput = screen.getByLabelText(/message/i)
 
-    fireEvent.change(firstNameInput, { target: { value: 'Dan' } })
-    // fireEvent.change(lastNameInput, { target: { value: 'Dan' } })
-    // fireEvent.change(emailInput, { target: { value: 'Dan' } })
-    // fireEvent.change(messageInput, { target: { value: 'Dan' })
+    fireEvent.change(firstNameInput, { target: { value: 'Danny' } })
+    fireEvent.change(lastNameInput, { target: { value: 'Burke' } })
+    fireEvent.change(emailInput, { target: { value: 'bluebill1049@hotmail.com' }})
+    fireEvent.change(messageInput, { target: { value: 'please work dear sweet god please work'}})
 
-    // const submitButton = screen.getByText(/submit/i)
+    const submitButton = screen.getByRole('button')
+    fireEvent.click(submitButton)
+
+    const newPerson = screen.getByText(/danny/i)
+
 })
